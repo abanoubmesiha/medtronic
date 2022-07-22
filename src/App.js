@@ -1,5 +1,6 @@
 import Forms from "./forms";
 import Header from "./layout/header";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (

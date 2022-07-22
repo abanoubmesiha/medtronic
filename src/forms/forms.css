@@ -1,5 +1,6 @@
 section.forms {
-    position: absolute;
+    position: relative;
+    padding: 5vh 10vw;
 }
 section.forms::before {    
     content: "";
@@ -12,5 +13,6 @@ section.forms::before {
     right: 0px;
     bottom: 0px;
     left: 0px;
-    opacity: 0.2;
+    opacity: 0.05;
+    z-index: -1;
 }

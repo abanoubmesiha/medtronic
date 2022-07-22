@@ -5,10 +5,6 @@ header {
     border-bottom: 1px dashed gray;
 }
 
-header img.logo {
-    height: 20vh;
-}
-
 header img.strapline {
     height: auto;
     width: 20vw;
