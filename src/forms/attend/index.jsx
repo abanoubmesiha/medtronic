@@ -38,11 +38,11 @@ const validationSchema = yup.object({
   areYou: yup.boolean().required("Required"),
 });
 
-function Attend({setPage}) {
+function Attend({onSubmit}) {
   const resolver = useYupValidationResolver(validationSchema);
   const { handleSubmit, register, formState: { errors } } = useForm({ resolver });
 
-  return <Form onSubmit={handleSubmit(data => setPage(2))} className={errors.areYou?'was-validated':''}>
+  return <Form onSubmit={handleSubmit(data => onSubmit(data))} className={errors.areYou?'was-validated':''}>
     <h5>Are you attending the meeting?</h5>
     <div className="form-check form-check-inline">
       <input type="radio" value="true" {...register('areYou')} className="form-check-input" /> Yes

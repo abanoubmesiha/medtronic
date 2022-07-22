@@ -40,11 +40,11 @@ const validationSchema = yup.object({
   email: yup.string().email().required("Required"),
 });
 
-function Welcome({setPage}) {
+function Welcome({onSubmit}) {
   const resolver = useYupValidationResolver(validationSchema);
   const { handleSubmit, register, formState: { errors } } = useForm({ resolver });
-  console.log(errors)
-  return <Form onSubmit={handleSubmit(data => setPage(2))}>
+
+  return <Form onSubmit={handleSubmit(data => onSubmit(data))}>
     <Form.Group className="mb-3" controlId="firstName">
       <Form.Label>First Name</Form.Label>
       <Form.Control type="text" placeholder="Enter First Name" {...register("firstName")} />

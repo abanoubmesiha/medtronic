@@ -1,7 +1,9 @@
 section.forms {
     position: relative;
     padding: 5vh 10vw;
+    min-height: 70vh;
 }
+
 section.forms::before {    
     content: "";
     background-image: url("../../public/watermark.png");
@@ -15,4 +17,8 @@ section.forms::before {
     left: 0px;
     opacity: 0.05;
     z-index: -1;
+}
+
+section.forms > h1:first-child {
+    margin-bottom: 5vh;
 }
