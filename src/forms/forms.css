@@ -1,0 +1,16 @@
+section.forms {
+    position: absolute;
+}
+section.forms::before {    
+    content: "";
+    background-image: url("../../public/watermark.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50% 50%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.2;
+}
