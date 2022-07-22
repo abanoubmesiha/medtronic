@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Row, Col } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
@@ -40,13 +40,13 @@ const validationSchema = yup.object({
   email: yup.string().email().required("Required"),
 });
 
-function Welcome() {
+function Welcome({setPage}) {
     const resolver = useYupValidationResolver(validationSchema);
     const { handleSubmit, register, formState: { errors } } = useForm({ resolver });
 
     return <div>
         <h1>Welcome EA Annual Meeting</h1>
-        <Form onSubmit={handleSubmit(data => console.log(data))}>
+        <Form onSubmit={handleSubmit(data => setPage(2))}>
             <Form.Group className="mb-3" controlId="firstName">
                 <Form.Label>First Name</Form.Label>
                 <Form.Control type="text" placeholder="Enter First Name" {...register("firstName")} />
@@ -74,9 +74,14 @@ function Welcome() {
                 </Form.Control.Feedback>
             </Form.Group>
 
-            <Button variant="primary" type="submit">
-                Submit
-            </Button>
+            <Row>
+              <Col className='d-flex justify-content-end'>
+                <Button variant="primary" type="submit" className='float-right'>
+                    Next
+                </Button>
+              </Col>
+            </Row>
+
         </Form>
     </div>
 }
