@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
-import './forms.css'
 import Welcome from './welcome'
 import Attend from './attend'
+import './forms.css'
 
 function Forms() {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(2);
 
   return <section className='forms'>
-    {page === 1 && <Welcome setPage={setPage} /> }
+    <h1>Welcome EA Annual Meeting</h1>
+    {/* {page === 1 && <Welcome setPage={setPage} /> } */}
     {page === 2 && <Attend setPage={setPage} /> }
   </section>
 }

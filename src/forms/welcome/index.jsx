@@ -41,49 +41,45 @@ const validationSchema = yup.object({
 });
 
 function Welcome({setPage}) {
-    const resolver = useYupValidationResolver(validationSchema);
-    const { handleSubmit, register, formState: { errors } } = useForm({ resolver });
+  const resolver = useYupValidationResolver(validationSchema);
+  const { handleSubmit, register, formState: { errors } } = useForm({ resolver });
+  console.log(errors)
+  return <Form onSubmit={handleSubmit(data => setPage(2))}>
+    <Form.Group className="mb-3" controlId="firstName">
+      <Form.Label>First Name</Form.Label>
+      <Form.Control type="text" placeholder="Enter First Name" {...register("firstName")} />
+      <Form.Control.Feedback type="invalid" className={errors.firstName ? 'd-block' : 'd-none'}>
+        Please provide a First Name.
+      </Form.Control.Feedback>
+    </Form.Group>
 
-    return <div>
-        <h1>Welcome EA Annual Meeting</h1>
-        <Form onSubmit={handleSubmit(data => setPage(2))}>
-            <Form.Group className="mb-3" controlId="firstName">
-                <Form.Label>First Name</Form.Label>
-                <Form.Control type="text" placeholder="Enter First Name" {...register("firstName")} />
-                <Form.Control.Feedback type="invalid" className={errors.firstName ? 'd-block' : 'd-none'}>
-                    Please provide a First Name.
-                </Form.Control.Feedback>
-            </Form.Group>
+    <Form.Group className="mb-3" controlId="lastName">
+      <Form.Label>Last Name</Form.Label>
+      <Form.Control type="text" placeholder="Enter Last Name" {...register("lastName")} />
+      <Form.Control.Feedback type="invalid" className={errors.lastName ? 'd-block' : 'd-none'}>
+        Please provide a Last Name.
+      </Form.Control.Feedback>
+    </Form.Group>
 
-            <Form.Group className="mb-3" controlId="lastName">
-                <Form.Label>Last Name</Form.Label>
-                <Form.Control type="text" placeholder="Enter Last Name" {...register("lastName")} />
-                <Form.Control.Feedback type="invalid" className={errors.lastName ? 'd-block' : 'd-none'}>
-                    Please provide a Last Name.
-                </Form.Control.Feedback>
-            </Form.Group>
+    <Form.Group className="mb-3" controlId="email">
+      <Form.Label>Email</Form.Label>
+      <Form.Control type="email" placeholder="Enter Email" {...register("email")} />
+      <Form.Text className="text-muted">
+        We'll never share your email with anyone else.
+      </Form.Text>
+      <Form.Control.Feedback type="invalid" className={errors.email ? 'd-block' : 'd-none'}>
+        Please provide an Email.
+      </Form.Control.Feedback>
+    </Form.Group>
 
-            <Form.Group className="mb-3" controlId="email">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="email" placeholder="Enter Email" {...register("email")} />
-                <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                </Form.Text>
-                <Form.Control.Feedback type="invalid" className={errors.email ? 'd-block' : 'd-none'}>
-                    Please provide an Email.
-                </Form.Control.Feedback>
-            </Form.Group>
-
-            <Row>
-              <Col className='d-flex justify-content-end'>
-                <Button variant="primary" type="submit" className='float-right'>
-                    Next
-                </Button>
-              </Col>
-            </Row>
-
-        </Form>
-    </div>
+    <Row>
+      <Col className='d-flex justify-content-end'>
+        <Button variant="primary" type="submit" className='float-right'>
+          Next
+        </Button>
+      </Col>
+    </Row>
+  </Form>
 }
 
 export default Welcome
