@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -39,9 +39,13 @@ const validationSchema = yup.object({
   areYouAttending: yup.string().required("Required"),
 });
 
-function Attend({onSubmit, setPage}) {
+function Attend({onSubmit, setPage, allData}) {
   const resolver = useYupValidationResolver(validationSchema);
-  const { handleSubmit, register, formState: { errors } } = useForm({ resolver });
+  const { handleSubmit, register, formState: { errors }, reset } = useForm({ resolver });
+  
+  useEffect(() => {
+    reset(allData)
+  }, [])
 
   return <Form onSubmit={handleSubmit(data => onSubmit(data, data.areYouAttending === "Yes" ? PAGES.FURTHER : PAGES.THANKYOU))} className={errors.areYouAttending?'was-validated':''}>
     <h5>Are you attending the meeting?</h5>
