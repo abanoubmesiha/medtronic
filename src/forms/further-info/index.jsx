@@ -35,7 +35,7 @@ const useYupValidationResolver = validationSchema =>
   );
   
 const validationSchema = yup.object({
-  function: yup.boolean().required("Required"),
+  function: yup.string().required("Required"),
   nationality: yup.string().required("Required"),
   passportNumber: yup.string().required("Required"),
   departingCity: yup.string().required("Required"),

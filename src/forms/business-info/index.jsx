@@ -35,7 +35,7 @@ const useYupValidationResolver = validationSchema =>
   );
   
 const validationSchema = yup.object({
-  businessTitle: yup.boolean().required("Required"),
+  businessTitle: yup.string().required("Required"),
   phoneNumber: yup.string().required("Required"),
 });
 
