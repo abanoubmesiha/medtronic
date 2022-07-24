@@ -36,22 +36,22 @@ const useYupValidationResolver = validationSchema =>
   );
   
 const validationSchema = yup.object({
-  areYou: yup.boolean().required("Required"),
+  areYouAttending: yup.string().required("Required"),
 });
 
 function Attend({onSubmit}) {
   const resolver = useYupValidationResolver(validationSchema);
   const { handleSubmit, register, formState: { errors } } = useForm({ resolver });
 
-  return <Form onSubmit={handleSubmit(data => onSubmit(data, data.areYou ? PAGES.FURTHER : PAGES.THANKYOU))} className={errors.areYou?'was-validated':''}>
+  return <Form onSubmit={handleSubmit(data => onSubmit(data, data.areYouAttending ? PAGES.FURTHER : PAGES.THANKYOU))} className={errors.areYouAttending?'was-validated':''}>
     <h5>Are you attending the meeting?</h5>
     <div className="form-check form-check-inline">
-      <input type="radio" value="true" {...register('areYou')} className="form-check-input" /> Yes
+      <input type="radio" value="Yes" {...register('areYouAttending')} className="form-check-input" /> Yes
     </div>
     <div className="form-check form-check-inline">
-      <input type="radio" value="false" {...register('areYou')} className="form-check-input" /> No
+      <input type="radio" value="No" {...register('areYouAttending')} className="form-check-input" /> No
     </div>
-    <Form.Control.Feedback type="invalid" className={errors.areYou ? 'd-block' : 'd-none'}>
+    <Form.Control.Feedback type="invalid" className={errors.areYouAttending ? 'd-block' : 'd-none'}>
       Please provide an answer.
     </Form.Control.Feedback>
     <Row>

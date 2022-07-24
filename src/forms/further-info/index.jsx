@@ -36,7 +36,7 @@ const useYupValidationResolver = validationSchema =>
   );
   
 const validationSchema = yup.object({
-  function: yup.string().required("Required"),
+  functionOrCommercial: yup.string().required("Required"),
   nationality: yup.string().required("Required"),
   passportNumber: yup.string().required("Required"),
   departingCity: yup.string().required("Required"),
@@ -50,12 +50,12 @@ function FurtherInfo({onSubmit}) {
   return <Form onSubmit={handleSubmit(data => onSubmit(data, PAGES.BUSINESS))} className={errors.areYou?'was-validated':''}>
     <h5>Are you function or commercial?</h5>
     <div className="form-check form-check-inline">
-      <input type="radio" value="true" {...register('function')} className="form-check-input" /> Yes
+      <input type="radio" value="function" {...register('functionOrCommercial')} className="form-check-input" /> function
     </div>
     <div className="form-check form-check-inline">
-      <input type="radio" value="false" {...register('function')} className="form-check-input" /> No
+      <input type="radio" value="commercial" {...register('functionOrCommercial')} className="form-check-input" /> commercial
     </div>
-    <Form.Control.Feedback type="invalid" className={errors.function ? 'd-block' : 'd-none'}>
+    <Form.Control.Feedback type="invalid" className={errors.functionOrCommercial ? 'd-block' : 'd-none'}>
       Please provide an answer.
     </Form.Control.Feedback>
     
