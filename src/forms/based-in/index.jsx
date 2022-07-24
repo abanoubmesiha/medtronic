@@ -37,20 +37,20 @@ const useYupValidationResolver = validationSchema =>
   );
   
 const validationSchema = yup.object({
-  basedIn: yup.boolean().required("Required"),
+  basedIn: yup.string().required("Required"),
 });
 
 function BasedIn({onSubmit}) {
   const resolver = useYupValidationResolver(validationSchema);
   const { handleSubmit, register, formState: { errors } } = useForm({ resolver });
 
-  return <Form onSubmit={handleSubmit(data => onSubmit(data, data.basedIn ? PAGES.EGYPT : PAGES.FLY))} className={errors.basedIn?'was-validated':''}>
+  return <Form onSubmit={handleSubmit(data => onSubmit(data, data.basedIn === 'Egypt' ? PAGES.EGYPT : PAGES.FLY))} className={errors.basedIn?'was-validated':''}>
     <h5>Based in?</h5>
     <div className="form-check form-check-inline">
-      <input type="radio" value="Egypt" {...register('basedIn')} className="form-check-input" /> Yes
+      <input type="radio" value="Egypt" {...register('basedIn')} className="form-check-input" /> Egypt
     </div>
     <div className="form-check form-check-inline">
-      <input type="radio" value="Flying" {...register('basedIn')} className="form-check-input" /> No
+      <input type="radio" value="Flying" {...register('basedIn')} className="form-check-input" /> Flying In
     </div>
     <Form.Control.Feedback type="invalid" className={errors.basedIn ? 'd-block' : 'd-none'}>
       Please provide an answer.

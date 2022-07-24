@@ -4,6 +4,7 @@ import React, { useCallback } from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import { PAGES } from '../utils';
 
 const useYupValidationResolver = validationSchema =>
   useCallback(
@@ -52,7 +53,7 @@ function FlyInfo({onSubmit}) {
   const resolver = useYupValidationResolver(validationSchema);
   const { handleSubmit, register, formState: { errors } } = useForm({ resolver });
 
-  return <Form onSubmit={handleSubmit(data => onSubmit(data))} className={errors.areYou?'was-validated':''}>
+  return <Form onSubmit={handleSubmit(data => onSubmit(data, PAGES.THANKYOU))} className={errors.areYou?'was-validated':''}>
     <h4>Arrival flight details</h4>
     <Form.Group className="mb-3 mt-2" controlId="arrivalCarrierName">
       <Form.Label>Air carrier name</Form.Label>

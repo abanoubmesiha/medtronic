@@ -14,8 +14,12 @@ function Forms() {
   const [data, setData] = useState({})
 
   const onSubmit = (moreData, nextPage) => {
+    const allData = {...data, ...moreData};
     setPage(nextPage)
-    setData({...data, ...moreData})
+    setData(allData);
+    if (nextPage === PAGES.THANKYOU) {
+      console.log(allData);
+    }
   }
   return <section className='forms'>
     <h1>Welcome EA Annual Meeting</h1>
