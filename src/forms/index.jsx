@@ -13,12 +13,22 @@ function Forms() {
   const [page, setPage] = useState(1);
   const [data, setData] = useState({})
 
-  const onSubmit = (moreData, nextPage) => {
+  const onSubmit = async (moreData, nextPage) => {
     const allData = {...data, ...moreData};
     setPage(nextPage)
     setData(allData);
     if (nextPage === PAGES.THANKYOU) {
-      console.log(allData);
+        await fetch(process.env.REACT_APP_API_SEND_DATA, {
+          method: 'POST',
+          mode: 'cors',
+          cache: 'no-cache',
+          credentials: 'same-origin',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          referrerPolicy: 'no-referrer',
+          body: JSON.stringify(allData)
+        });
     }
   }
   return <section className='forms'>
