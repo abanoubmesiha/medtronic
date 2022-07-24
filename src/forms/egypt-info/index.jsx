@@ -40,6 +40,7 @@ const validationSchema = yup.object({
   checkIn: yup.string().required("Required"),
   checkOut: yup.string().required("Required"),
   smoking: yup.string().required("Required"),
+  alergies: yup.string().required("Required"),
 });
 
 function EgyptInfo({onSubmit, setPage}) {
@@ -63,12 +64,12 @@ function EgyptInfo({onSubmit, setPage}) {
     </Form.Group>
     <h5>Any food alergies?</h5>
     <div className="form-check form-check-inline">
-      <input type="radio" value="true" {...register('function')} className="form-check-input" /> Yes
+      <input type="radio" value="Yes" {...register('alergies')} className="form-check-input" /> Yes
     </div>
     <div className="form-check form-check-inline">
-      <input type="radio" value="false" {...register('function')} className="form-check-input" /> No
+      <input type="radio" value="No" {...register('alergies')} className="form-check-input" /> No
     </div>
-    <Form.Control.Feedback type="invalid" className={errors.function ? 'd-block' : 'd-none'}>
+    <Form.Control.Feedback type="invalid" className={errors.alergies ? 'd-block' : 'd-none'}>
       Please provide an answer.
     </Form.Control.Feedback>
     <h5>Are you smoking?</h5>
