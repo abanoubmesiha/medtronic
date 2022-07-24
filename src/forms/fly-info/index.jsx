@@ -47,12 +47,14 @@ const validationSchema = yup.object({
   checkIn: yup.string().required("Required"),
   checkOut: yup.string().required("Required"),
   alergies: yup.string().required("Required"),
+  alergiesNotes: yup.string().required("Required"),
   smoking: yup.string().required("Required"),
 });
 
 function FlyInfo({onSubmit, setPage}) {
   const resolver = useYupValidationResolver(validationSchema);
-  const { handleSubmit, register, formState: { errors } } = useForm({ resolver });
+  const { handleSubmit, watch, register, formState: { errors } } = useForm({ resolver });
+  const alergies = watch('alergies');
 
   return <Form onSubmit={handleSubmit(data => onSubmit(data, PAGES.THANKYOU))} className={errors.areYou?'was-validated':''}>
     <h4>Arrival flight details</h4>
@@ -123,6 +125,13 @@ function FlyInfo({onSubmit, setPage}) {
     <Form.Control.Feedback type="invalid" className={errors.alergies ? 'd-block' : 'd-none'}>
       Please provide an answer.
     </Form.Control.Feedback>
+    <Form.Group className={`mb-3 mt-2 ${alergies === "Yes" ? '' : 'd-none'}`} controlId="alergiesNotes">
+      <Form.Label>Alergies Notes</Form.Label>
+      <Form.Control type="text" placeholder="Enter Alergies Notes" {...register("alergiesNotes")} />
+      <Form.Control.Feedback type="invalid" className={errors.alergiesNotes ? 'd-block' : 'd-none'}>
+        Please provide Alergies Notes.
+      </Form.Control.Feedback>
+    </Form.Group>
     <h5>Are you smoking?</h5>
     <div className="form-check form-check-inline">
       <input type="radio" value="Yes" {...register('smoking')} className="form-check-input" /> Yes
