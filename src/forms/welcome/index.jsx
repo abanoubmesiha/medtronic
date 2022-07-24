@@ -2,6 +2,7 @@ import React, { useCallback } from 'react'
 import { Button, Form, Row, Col } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import { PAGES } from '../utils';
 
 const useYupValidationResolver = validationSchema =>
   useCallback(
@@ -44,7 +45,7 @@ function Welcome({onSubmit}) {
   const resolver = useYupValidationResolver(validationSchema);
   const { handleSubmit, register, formState: { errors } } = useForm({ resolver });
 
-  return <Form onSubmit={handleSubmit(data => onSubmit(data, 2))}>
+  return <Form onSubmit={handleSubmit(data => onSubmit(data, PAGES.ATTEND))}>
     <Form.Group className="mb-3" controlId="firstName">
       <Form.Label>First Name</Form.Label>
       <Form.Control type="text" placeholder="Enter First Name" {...register("firstName")} />

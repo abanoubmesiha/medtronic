@@ -3,6 +3,7 @@ import React, { useCallback } from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import { PAGES } from '../utils';
 
 const useYupValidationResolver = validationSchema =>
   useCallback(
@@ -43,7 +44,7 @@ function BasedIn({onSubmit}) {
   const resolver = useYupValidationResolver(validationSchema);
   const { handleSubmit, register, formState: { errors } } = useForm({ resolver });
 
-  return <Form onSubmit={handleSubmit(data => onSubmit(data, data.basedIn ? 4 : 3))} className={errors.basedIn?'was-validated':''}>
+  return <Form onSubmit={handleSubmit(data => onSubmit(data, data.basedIn ? PAGES.EGYPT : PAGES.FLY))} className={errors.basedIn?'was-validated':''}>
     <h5>Based in?</h5>
     <div className="form-check form-check-inline">
       <input type="radio" value="Egypt" {...register('basedIn')} className="form-check-input" /> Yes

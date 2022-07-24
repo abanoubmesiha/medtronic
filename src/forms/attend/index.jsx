@@ -2,6 +2,7 @@ import React, { useCallback } from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import { PAGES } from '../utils';
 
 const useYupValidationResolver = validationSchema =>
   useCallback(
@@ -42,7 +43,7 @@ function Attend({onSubmit}) {
   const resolver = useYupValidationResolver(validationSchema);
   const { handleSubmit, register, formState: { errors } } = useForm({ resolver });
 
-  return <Form onSubmit={handleSubmit(data => onSubmit(data, data.areYou ? 4 : 3))} className={errors.areYou?'was-validated':''}>
+  return <Form onSubmit={handleSubmit(data => onSubmit(data, data.areYou ? PAGES.FURTHER : PAGES.WELCOME))} className={errors.areYou?'was-validated':''}>
     <h5>Are you attending the meeting?</h5>
     <div className="form-check form-check-inline">
       <input type="radio" value="true" {...register('areYou')} className="form-check-input" /> Yes

@@ -6,9 +6,11 @@ import './forms.css'
 import BusinessInfo from './business-info'
 import BasedIn from './based-in'
 import EgyptInfo from './egypt-info'
+import FlyInfo from './fly-info'
+import { PAGES } from './utils'
 
 function Forms() {
-  const [page, setPage] = useState(7);
+  const [page, setPage] = useState(1);
   const [data, setData] = useState({})
 
   const onSubmit = (moreData, nextPage) => {
@@ -17,13 +19,14 @@ function Forms() {
   }
   return <section className='forms'>
     <h1>Welcome EA Annual Meeting</h1>
-    {page === 1 && <Welcome onSubmit={onSubmit} /> }
-    {page === 2 && <Attend onSubmit={onSubmit} /> }
-    {page === 3 && <>Thank You!</> }
-    {page === 4 && <FurtherInfo onSubmit={onSubmit} /> }
-    {page === 5 && <BusinessInfo onSubmit={onSubmit} /> }
-    {page === 6 && <BasedIn onSubmit={onSubmit} /> }
-    {page === 7 && <EgyptInfo onSubmit={onSubmit} /> }
+    {page === PAGES.WELCOME && <Welcome onSubmit={onSubmit} /> }
+    {page === PAGES.ATTEND && <Attend onSubmit={onSubmit} /> }
+    {page === PAGES.THANKYOU && <>Thank You!</> }
+    {page === PAGES.FURTHER && <FurtherInfo onSubmit={onSubmit} /> }
+    {page === PAGES.BUSINESS && <BusinessInfo onSubmit={onSubmit} /> }
+    {page === PAGES.BASED && <BasedIn onSubmit={onSubmit} /> }
+    {page === PAGES.EGYPT && <EgyptInfo onSubmit={onSubmit} /> }
+    {page === PAGES.FLY && <FlyInfo onSubmit={onSubmit} /> }
   </section>
 }
 
