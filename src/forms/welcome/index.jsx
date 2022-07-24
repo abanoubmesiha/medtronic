@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { Button, Form, Row, Col } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -41,9 +41,13 @@ const validationSchema = yup.object({
   email: yup.string().email().required("Required"),
 });
 
-function Welcome({onSubmit}) {
+function Welcome({onSubmit, allData}) {
   const resolver = useYupValidationResolver(validationSchema);
-  const { handleSubmit, register, formState: { errors } } = useForm({ resolver });
+  const { handleSubmit, register, formState: { errors }, reset } = useForm({ resolver });
+  
+  useEffect(() => {
+    reset(allData)
+  }, [])
 
   return <Form onSubmit={handleSubmit(data => onSubmit(data, PAGES.ATTEND))}>
     <Form.Group className="mb-3" controlId="firstName">

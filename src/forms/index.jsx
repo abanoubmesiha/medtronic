@@ -33,13 +33,13 @@ function Forms() {
   }
   return <section className='forms'>
     <h1>Welcome EA Annual Meeting</h1>
-    {page === PAGES.WELCOME && <Welcome onSubmit={onSubmit} /> }
-    {page === PAGES.ATTEND && <Attend onSubmit={onSubmit} setPage={setPage} /> }
+    {page === PAGES.WELCOME && <Welcome onSubmit={onSubmit} allData={data} /> }
+    {page === PAGES.ATTEND && <Attend onSubmit={onSubmit} setPage={setPage} allData={data} /> }
     {page === PAGES.THANKYOU && <>Thank You!</> }
-    {page === PAGES.FURTHER && <FurtherInfo onSubmit={onSubmit} setPage={setPage} /> }
-    {page === PAGES.BUSINESS && <BusinessInfo onSubmit={onSubmit} setPage={setPage} /> }
-    {page === PAGES.BASED && <BasedIn onSubmit={onSubmit} setPage={setPage} /> }
-    {page === PAGES.EGYPT && <EgyptInfo onSubmit={onSubmit} setPage={setPage} /> }
+    {page === PAGES.FURTHER && <FurtherInfo onSubmit={onSubmit} setPage={setPage} allData={data} /> }
+    {page === PAGES.BUSINESS && <BusinessInfo onSubmit={onSubmit} setPage={setPage} allData={data} /> }
+    {page === PAGES.BASED && <BasedIn onSubmit={onSubmit} setPage={setPage} allData={data} /> }
+    {page === PAGES.EGYPT && <EgyptInfo onSubmit={onSubmit} setPage={setPage} allData={data} /> }
     {page === PAGES.FLY && <FlyInfo onSubmit={onSubmit} setPage={setPage} /> }
   </section>
 }

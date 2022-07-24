@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -43,9 +43,13 @@ const validationSchema = yup.object({
   departingCountry: yup.string().required("Required"),
 });
 
-function FurtherInfo({onSubmit, setPage}) {
+function FurtherInfo({onSubmit, setPage, allData}) {
   const resolver = useYupValidationResolver(validationSchema);
-  const { handleSubmit, register, formState: { errors } } = useForm({ resolver });
+  const { handleSubmit, register, formState: { errors }, reset } = useForm({ resolver });
+  
+  useEffect(() => {
+    reset(allData)
+  }, [])
 
   return <Form onSubmit={handleSubmit(data => onSubmit(data, PAGES.BUSINESS))} className={errors.areYou?'was-validated':''}>
     <h5>Are you function or commercial?</h5>

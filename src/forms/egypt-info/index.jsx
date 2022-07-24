@@ -1,5 +1,5 @@
 
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -44,9 +44,14 @@ const validationSchema = yup.object({
   smoking: yup.string().required("Required"),
 });
 
-function EgyptInfo({onSubmit, setPage}) {
+function EgyptInfo({onSubmit, setPage, allData}) {
   const resolver = useYupValidationResolver(validationSchema);
-  const { handleSubmit, watch, register, formState: { errors } } = useForm({ resolver });
+  const { handleSubmit, watch, register, formState: { errors }, reset } = useForm({ resolver });
+  
+  useEffect(() => {
+    reset(allData)
+  }, [])
+  
   const alergies = watch('alergies');
 
   return <Form onSubmit={handleSubmit(data => onSubmit(data, PAGES.THANKYOU))} className={errors.areYou?'was-validated':''}>

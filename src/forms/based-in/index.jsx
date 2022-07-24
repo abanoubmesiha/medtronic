@@ -1,5 +1,5 @@
 
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -40,9 +40,13 @@ const validationSchema = yup.object({
   basedIn: yup.string().required("Required"),
 });
 
-function BasedIn({onSubmit, setPage}) {
+function BasedIn({onSubmit, setPage, allData}) {
   const resolver = useYupValidationResolver(validationSchema);
-  const { handleSubmit, register, formState: { errors } } = useForm({ resolver });
+  const { handleSubmit, register, formState: { errors }, reset } = useForm({ resolver });
+  
+  useEffect(() => {
+    reset(allData)
+  }, [])
 
   return <Form onSubmit={handleSubmit(data => onSubmit(data, data.basedIn === 'Egypt' ? PAGES.EGYPT : PAGES.FLY))} className={errors.basedIn?'was-validated':''}>
     <h5>Based in?</h5>
