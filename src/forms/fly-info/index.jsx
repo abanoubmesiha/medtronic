@@ -72,21 +72,21 @@ function FlyInfo({onSubmit}) {
     </Form.Group>
     <Form.Group className="mb-3 mt-2" controlId="arrivalTime">
       <Form.Label>Arrival time to Cairo </Form.Label>
-      <Form.Control type="text" placeholder="Enter Arrival time to Cairo " {...register("arrivalTime")} />
+      <Form.Control type="time" placeholder="Enter Arrival time to Cairo " {...register("arrivalTime")} />
       <Form.Control.Feedback type="invalid" className={errors.arrivalTime ? 'd-block' : 'd-none'}>
         Please provide an Arrival time to Cairo.
       </Form.Control.Feedback>
     </Form.Group>
     <Form.Group className="mb-3 mt-2" controlId="checkIn">
       <Form.Label>Hotel check in Date</Form.Label>
-      <Form.Control type="text" placeholder="Enter Hotel check in Date" {...register("checkIn")} />
+      <Form.Control type="date" placeholder="Enter Hotel check in Date" {...register("checkIn")} />
       <Form.Control.Feedback type="invalid" className={errors.checkIn ? 'd-block' : 'd-none'}>
         Please provide a Hotel check in Date.
       </Form.Control.Feedback>
     </Form.Group>
     <Form.Group className="mb-3 mt-2" controlId="checkOut">
       <Form.Label>Hotel check out Date</Form.Label>
-      <Form.Control type="text" placeholder="Enter Hotel check out Date" {...register("checkOut")} />
+      <Form.Control type="date" placeholder="Enter Hotel check out Date" {...register("checkOut")} />
       <Form.Control.Feedback type="invalid" className={errors.checkOut ? 'd-block' : 'd-none'}>
         Please provide a Hotel check out Date.
       </Form.Control.Feedback>
@@ -108,27 +108,27 @@ function FlyInfo({onSubmit}) {
     </Form.Group>
     <Form.Group className="mb-3 mt-2" controlId="departureTime">
       <Form.Label>Departure time from Cairo </Form.Label>
-      <Form.Control type="text" placeholder="Enter Departure time from Cairo " {...register("departureTime")} />
+      <Form.Control type="time" placeholder="Enter Departure time from Cairo " {...register("departureTime")} />
       <Form.Control.Feedback type="invalid" className={errors.departureTime ? 'd-block' : 'd-none'}>
         Please provide an Departure time from Cairo.
       </Form.Control.Feedback>
     </Form.Group>
     <h5>Any food alergies?</h5>
     <div className="form-check form-check-inline">
-      <input type="radio" value="true" {...register('alergies')} className="form-check-input" /> Yes
+      <input type="radio" value="Yes" {...register('alergies')} className="form-check-input" /> Yes
     </div>
     <div className="form-check form-check-inline">
-      <input type="radio" value="false" {...register('alergies')} className="form-check-input" /> No
+      <input type="radio" value="No" {...register('alergies')} className="form-check-input" /> No
     </div>
     <Form.Control.Feedback type="invalid" className={errors.alergies ? 'd-block' : 'd-none'}>
       Please provide an answer.
     </Form.Control.Feedback>
     <h5>Are you smoking?</h5>
     <div className="form-check form-check-inline">
-      <input type="radio" value="true" {...register('smoking')} className="form-check-input" /> Yes
+      <input type="radio" value="Yes" {...register('smoking')} className="form-check-input" /> Yes
     </div>
     <div className="form-check form-check-inline">
-      <input type="radio" value="false" {...register('smoking')} className="form-check-input" /> No
+      <input type="radio" value="No" {...register('smoking')} className="form-check-input" /> No
     </div>
     <Form.Control.Feedback type="invalid" className={errors.smoking ? 'd-block' : 'd-none'}>
       Please provide an answer.

@@ -49,14 +49,14 @@ function EgyptInfo({onSubmit}) {
   return <Form onSubmit={handleSubmit(data => onSubmit(data, PAGES.THANKYOU))} className={errors.areYou?'was-validated':''}>
     <Form.Group className="mb-3 mt-2" controlId="checkIn">
       <Form.Label>Hotel check in Date</Form.Label>
-      <Form.Control type="text" placeholder="Enter Hotel check in Date" {...register("checkIn")} />
+      <Form.Control type="date" placeholder="Enter Hotel check in Date" {...register("checkIn")} />
       <Form.Control.Feedback type="invalid" className={errors.checkIn ? 'd-block' : 'd-none'}>
         Please provide a Hotel check in Date.
       </Form.Control.Feedback>
     </Form.Group>
     <Form.Group className="mb-3 mt-2" controlId="checkOut">
       <Form.Label>Hotel check out Date</Form.Label>
-      <Form.Control type="text" placeholder="Enter Hotel check out Date" {...register("checkOut")} />
+      <Form.Control type="date" placeholder="Enter Hotel check out Date" {...register("checkOut")} />
       <Form.Control.Feedback type="invalid" className={errors.checkOut ? 'd-block' : 'd-none'}>
         Please provide a Hotel check out Date.
       </Form.Control.Feedback>
