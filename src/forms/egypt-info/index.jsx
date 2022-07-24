@@ -42,7 +42,7 @@ const validationSchema = yup.object({
   smoking: yup.string().required("Required"),
 });
 
-function EgyptInfo({onSubmit}) {
+function EgyptInfo({onSubmit, setPage}) {
   const resolver = useYupValidationResolver(validationSchema);
   const { handleSubmit, register, formState: { errors } } = useForm({ resolver });
 
@@ -82,9 +82,15 @@ function EgyptInfo({onSubmit}) {
       Please provide an answer.
     </Form.Control.Feedback>
     <div className="text-muted mt-3">NB: we'll send your request to the hotel to try to confirm your preference upon availability</div>
-    <Row>
-      <Col className='d-flex justify-content-end'>
-        <Button variant="primary" type="submit">
+
+    <Row className='justify-content-end'>
+      <Col xs="auto">
+        <Button variant="danger" onClick={() => setPage(PAGES.BASED)} className='float-right'>
+          Back
+        </Button>
+      </Col>
+      <Col xs="auto">
+        <Button variant="primary" type="submit" className='float-right'>
           Next
         </Button>
       </Col>

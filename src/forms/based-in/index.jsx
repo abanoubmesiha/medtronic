@@ -40,7 +40,7 @@ const validationSchema = yup.object({
   basedIn: yup.string().required("Required"),
 });
 
-function BasedIn({onSubmit}) {
+function BasedIn({onSubmit, setPage}) {
   const resolver = useYupValidationResolver(validationSchema);
   const { handleSubmit, register, formState: { errors } } = useForm({ resolver });
 
@@ -55,9 +55,15 @@ function BasedIn({onSubmit}) {
     <Form.Control.Feedback type="invalid" className={errors.basedIn ? 'd-block' : 'd-none'}>
       Please provide an answer.
     </Form.Control.Feedback>
-    <Row>
-      <Col className='d-flex justify-content-end'>
-        <Button variant="primary" type="submit">
+
+    <Row className='justify-content-end'>
+      <Col xs="auto">
+        <Button variant="danger" onClick={() => setPage(PAGES.BUSINESS)} className='float-right'>
+          Back
+        </Button>
+      </Col>
+      <Col xs="auto">
+        <Button variant="primary" type="submit" className='float-right'>
           Next
         </Button>
       </Col>

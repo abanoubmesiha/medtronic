@@ -40,7 +40,7 @@ const validationSchema = yup.object({
   phoneNumber: yup.string().required("Required"),
 });
 
-function BusinessInfo({onSubmit}) {
+function BusinessInfo({onSubmit, setPage}) {
   const resolver = useYupValidationResolver(validationSchema);
   const { handleSubmit, register, formState: { errors } } = useForm({ resolver });
 
@@ -59,9 +59,15 @@ function BusinessInfo({onSubmit}) {
         Please provide a Phone number.
       </Form.Control.Feedback>
     </Form.Group>
-    <Row>
-      <Col className='d-flex justify-content-end'>
-        <Button variant="primary" type="submit">
+
+    <Row className='justify-content-end'>
+      <Col xs="auto">
+        <Button variant="danger" onClick={() => setPage(PAGES.FURTHER)} className='float-right'>
+          Back
+        </Button>
+      </Col>
+      <Col xs="auto">
+        <Button variant="primary" type="submit" className='float-right'>
           Next
         </Button>
       </Col>

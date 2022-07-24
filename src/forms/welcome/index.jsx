@@ -73,8 +73,8 @@ function Welcome({onSubmit}) {
       </Form.Control.Feedback>
     </Form.Group>
 
-    <Row>
-      <Col className='d-flex justify-content-end'>
+    <Row className='justify-content-end'>
+      <Col xs="auto">
         <Button variant="primary" type="submit" className='float-right'>
           Next
         </Button>

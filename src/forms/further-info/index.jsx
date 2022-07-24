@@ -43,7 +43,7 @@ const validationSchema = yup.object({
   departingCountry: yup.string().required("Required"),
 });
 
-function FurtherInfo({onSubmit}) {
+function FurtherInfo({onSubmit, setPage}) {
   const resolver = useYupValidationResolver(validationSchema);
   const { handleSubmit, register, formState: { errors } } = useForm({ resolver });
 
@@ -87,9 +87,15 @@ function FurtherInfo({onSubmit}) {
         Please provide a Country from where you'll be departing.
       </Form.Control.Feedback>
     </Form.Group>
-    <Row>
-      <Col className='d-flex justify-content-end'>
-        <Button variant="primary" type="submit">
+
+    <Row className='justify-content-end'>
+      <Col xs="auto">
+        <Button variant="danger" onClick={() => setPage(PAGES.ATTEND)} className='float-right'>
+          Back
+        </Button>
+      </Col>
+      <Col xs="auto">
+        <Button variant="primary" type="submit" className='float-right'>
           Next
         </Button>
       </Col>
