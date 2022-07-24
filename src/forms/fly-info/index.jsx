@@ -46,8 +46,8 @@ const validationSchema = yup.object({
   departureTime: yup.string().required("Required"),
   checkIn: yup.string().required("Required"),
   checkOut: yup.string().required("Required"),
-  alergies: yup.boolean().required("Required"),
-  smoking: yup.boolean().required("Required"),
+  alergies: yup.string().required("Required"),
+  smoking: yup.string().required("Required"),
 });
 
 function FlyInfo({onSubmit}) {

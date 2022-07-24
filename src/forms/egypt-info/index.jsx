@@ -39,7 +39,7 @@ const useYupValidationResolver = validationSchema =>
 const validationSchema = yup.object({
   checkIn: yup.string().required("Required"),
   checkOut: yup.string().required("Required"),
-  smoking: yup.boolean().required("Required"),
+  smoking: yup.string().required("Required"),
 });
 
 function EgyptInfo({onSubmit}) {
@@ -73,10 +73,10 @@ function EgyptInfo({onSubmit}) {
     </Form.Control.Feedback>
     <h5>Are you smoking?</h5>
     <div className="form-check form-check-inline">
-      <input type="radio" value="true" {...register('smoking')} className="form-check-input" /> Yes
+      <input type="radio" value="Yes" {...register('smoking')} className="form-check-input" /> Yes
     </div>
     <div className="form-check form-check-inline">
-      <input type="radio" value="false" {...register('smoking')} className="form-check-input" /> No
+      <input type="radio" value="No" {...register('smoking')} className="form-check-input" /> No
     </div>
     <Form.Control.Feedback type="invalid" className={errors.smoking ? 'd-block' : 'd-none'}>
       Please provide an answer.
