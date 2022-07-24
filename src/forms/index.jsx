@@ -3,9 +3,10 @@ import Welcome from './welcome'
 import Attend from './attend'
 import FurtherInfo from './further-info'
 import './forms.css'
+import BusinessInfo from './business-info'
 
 function Forms() {
-  const [page, setPage] = useState(4);
+  const [page, setPage] = useState(5);
   const [data, setData] = useState({})
 
   const onSubmit = (moreData, nextPage) => {
@@ -18,6 +19,7 @@ function Forms() {
     {page === 2 && <Attend onSubmit={onSubmit} /> }
     {page === 3 && <>Thank You!</> }
     {page === 4 && <FurtherInfo onSubmit={onSubmit} /> }
+    {page === 5 && <BusinessInfo onSubmit={onSubmit} /> }
   </section>
 }
 
