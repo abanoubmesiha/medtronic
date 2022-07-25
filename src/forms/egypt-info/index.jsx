@@ -40,7 +40,11 @@ const validationSchema = yup.object({
   checkIn: yup.string().required("Required"),
   checkOut: yup.string().required("Required"),
   alergies: yup.string().required("Required"),
-  alergiesNotes: yup.string().required("Required"),
+  alergiesNotes: yup.string()
+    .when("alergies", {
+      is: 'Yes',
+      then: yup.string().required("Required")
+    }),
   smoking: yup.string().required("Required"),
 });
 
