@@ -20,11 +20,13 @@ function Forms() {
     if (nextPage === PAGES.THANKYOU) {
         await fetch(process.env.REACT_APP_API_SEND_DATA, {
           method: 'POST',
-          mode: 'no-cors',
+          mode: 'cors',
           cache: 'no-cache',
+          credentials: 'same-origin',
           headers: {
             'Content-Type': 'application/json'
           },
+          referrerPolicy: 'no-referrer',
           body: JSON.stringify(allData)
         });
     }
