@@ -41,8 +41,9 @@ const validationSchema = yup.object({
 
 function Attend({onSubmit, setPage, allData}) {
   const resolver = useYupValidationResolver(validationSchema);
-  const { handleSubmit, register, formState: { errors }, reset } = useForm({ resolver });
+  const { handleSubmit, watch, register, formState: { errors }, reset } = useForm({ resolver });
   
+  const areYouAttending = watch('areYouAttending');
   useEffect(() => {
     reset(allData)
   }, [])
@@ -67,7 +68,7 @@ function Attend({onSubmit, setPage, allData}) {
       </Col>
       <Col xs="auto">
         <Button variant="primary" type="submit" className='float-right'>
-          Next
+          {areYouAttending === 'No' ? 'Submit' : 'Next'}
         </Button>
       </Col>
     </Row>

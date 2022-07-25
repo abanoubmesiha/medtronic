@@ -106,7 +106,7 @@ function EgyptInfo({onSubmit, setPage, allData}) {
       </Col>
       <Col xs="auto">
         <Button variant="primary" type="submit" className='float-right'>
-          Next
+          Submit
         </Button>
       </Col>
     </Row>

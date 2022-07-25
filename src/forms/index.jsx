@@ -33,7 +33,7 @@ function Forms() {
     <h1>Welcome EA Annual Meeting</h1>
     {page === PAGES.WELCOME && <Welcome onSubmit={onSubmit} allData={data} /> }
     {page === PAGES.ATTEND && <Attend onSubmit={onSubmit} setPage={setPage} allData={data} /> }
-    {page === PAGES.THANKYOU && <>Thank You!</> }
+    {page === PAGES.THANKYOU && <><h3>Thank You!</h3>Registration have beeen submitted</> }
     {page === PAGES.FURTHER && <FurtherInfo onSubmit={onSubmit} setPage={setPage} allData={data} /> }
     {page === PAGES.BUSINESS && <BusinessInfo onSubmit={onSubmit} setPage={setPage} allData={data} /> }
     {page === PAGES.BASED && <BasedIn onSubmit={onSubmit} setPage={setPage} allData={data} /> }
