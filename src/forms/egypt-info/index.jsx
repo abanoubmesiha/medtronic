@@ -37,8 +37,8 @@ const useYupValidationResolver = validationSchema =>
   );
   
 const validationSchema = yup.object({
-  checkIn: yup.string().required("Required"),
-  checkOut: yup.string().required("Required"),
+  // checkIn: yup.string().required("Required"),
+  // checkOut: yup.string().required("Required"),
   alergies: yup.string().required("Required"),
   alergiesNotes: yup.string()
     .when("alergies", {
@@ -59,20 +59,20 @@ function EgyptInfo({onSubmit, setPage, allData}) {
   const alergies = watch('alergies');
 
   return <Form onSubmit={handleSubmit(data => onSubmit(data, PAGES.THANKYOU))} className={errors.areYou?'was-validated':''}>
-    <Form.Group className="mb-3 mt-2" controlId="checkIn">
+    {/* <Form.Group className="mb-3 mt-2" controlId="checkIn">
       <Form.Label>Hotel check in Date</Form.Label>
       <Form.Control type="date" placeholder="Enter Hotel check in Date" {...register("checkIn")} />
       <Form.Control.Feedback type="invalid" className={errors.checkIn ? 'd-block' : 'd-none'}>
         Please provide a Hotel check in Date.
       </Form.Control.Feedback>
-    </Form.Group>
-    <Form.Group className="mb-3 mt-2" controlId="checkOut">
+    </Form.Group> */}
+    {/* <Form.Group className="mb-3 mt-2" controlId="checkOut">
       <Form.Label>Hotel check out Date</Form.Label>
       <Form.Control type="date" placeholder="Enter Hotel check out Date" {...register("checkOut")} />
       <Form.Control.Feedback type="invalid" className={errors.checkOut ? 'd-block' : 'd-none'}>
         Please provide a Hotel check out Date.
       </Form.Control.Feedback>
-    </Form.Group>
+    </Form.Group> */}
     <h5>Any food alergies?</h5>
     <div className="form-check form-check-inline">
       <input type="radio" value="Yes" {...register('alergies')} className="form-check-input" /> Yes
