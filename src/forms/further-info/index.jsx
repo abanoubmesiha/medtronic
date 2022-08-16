@@ -39,8 +39,8 @@ const validationSchema = yup.object({
   functionOrCommercial: yup.string().required("Required"),
   nationality: yup.string().required("Required"),
   passportNumber: yup.string().required("Required"),
-  departingCity: yup.string().required("Required"),
-  departingCountry: yup.string().required("Required"),
+  // departingCity: yup.string().required("Required"),
+  // departingCountry: yup.string().required("Required"),
 });
 
 function FurtherInfo({onSubmit, setPage, allData}) {
@@ -77,7 +77,7 @@ function FurtherInfo({onSubmit, setPage, allData}) {
         Please provide a Passport number.
       </Form.Control.Feedback>
     </Form.Group>
-    <Form.Group className="mb-3" controlId="departingCity">
+    {/* <Form.Group className="mb-3" controlId="departingCity">
       <Form.Label>City from where you'll be departing</Form.Label>
       <Form.Control type="text" placeholder="Enter City from where you'll be departing" {...register("departingCity")} />
       <Form.Control.Feedback type="invalid" className={errors.departingCity ? 'd-block' : 'd-none'}>
@@ -90,7 +90,7 @@ function FurtherInfo({onSubmit, setPage, allData}) {
       <Form.Control.Feedback type="invalid" className={errors.departingCountry ? 'd-block' : 'd-none'}>
         Please provide a Country from where you'll be departing.
       </Form.Control.Feedback>
-    </Form.Group>
+    </Form.Group> */}
 
     <Row className='justify-content-end'>
       <Col xs="auto">
